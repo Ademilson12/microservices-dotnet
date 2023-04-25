@@ -9,6 +9,7 @@ Para executar o projeto, siga os seguintes passos:
 7. Execute o build do container do RestauranteService: digite "docker build -t restauranteservice:1.0 ." no terminal.
 8. Crie uma rede de comunicação entre os containers: digite "docker network create --driver bridge restaurante-bridge" no terminal.
 9. Crie um container do MySQL: digite "docker run --name=mysql -e MYSQL_ROOT_PASSWORD=root -d --network restaurante-bridge mysql:5.6" no terminal.
-10. Rode o container do ItemService: digite "docker run --name=item-service -p 8080:80 --network restaurante-bridge itemservice:1.0" no terminal.
-11. Rode o container do RestauranteService: digite "docker run --name=restaurante-service -p 8081:80 --network restaurante-bridge restauranteservice:1.0" no terminal.
-12. Com esses passos, o projeto estará rodando em seus containers e você poderá acessá-lo em seu navegador através das URLs "http://localhost:8080" e "http://localhost:8081".
+10. Crie um container RabbitMq: docker run -d --hostname rabbitmq-service --name rabbitmq-service --network restaurante-bridge rabbitmq:3-management
+11. Rode o container do ItemService: digite "docker run --name=item-service -p 8080:80 --network restaurante-bridge itemservice:1.0" no terminal.
+12. Rode o container do RestauranteService: digite "docker run --name=restaurante-service -p 8081:80 --network restaurante-bridge restauranteservice:1.0" no terminal.
+13. Com esses passos, o projeto estará rodando em seus containers e você poderá acessá-lo em seu navegador através das URLs "http://localhost:8080" e "http://localhost:8081".
